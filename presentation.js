@@ -8,7 +8,8 @@ const chapterLinks = [...chapterMenu.querySelectorAll('nav a')];
 const scenes = [...document.querySelectorAll('.scene')];
 const timeline = document.querySelector('.timeline');
 const checkpoints = [...timeline.querySelectorAll('.checkpoint')];
-const dateLinks = [...document.querySelectorAll('.timeline-nav a')];
+const timelineNav = document.querySelector('.timeline-nav');
+const dateLinks = [...timelineNav.querySelectorAll('a')];
 
 function setCurrent(links, fragment, kind) {
   for (const link of links) {
@@ -63,12 +64,20 @@ dateLinks.forEach((link, index) => link.addEventListener('click', event => {
   showCheckpoint(index);
 }));
 
-timeline.addEventListener('keydown', event => {
-  const current = Math.round(timeline.scrollLeft / timeline.clientWidth);
+function navigateCheckpoints(event, current) {
   const directions = { ArrowLeft: current - 1, ArrowRight: current + 1, Home: 0, End: checkpoints.length - 1 };
-  if (!(event.key in directions) || event.altKey || event.ctrlKey || event.metaKey) return;
+  if (!Object.hasOwn(directions, event.key) || event.altKey || event.ctrlKey || event.metaKey) return;
   event.preventDefault();
   showCheckpoint(Math.min(checkpoints.length - 1, Math.max(0, directions[event.key])));
+}
+
+timeline.addEventListener('keydown', event => {
+  navigateCheckpoints(event, Math.round(timeline.scrollLeft / timeline.clientWidth));
+});
+
+timelineNav.addEventListener('keydown', event => {
+  const current = dateLinks.indexOf(event.target);
+  if (current >= 0) navigateCheckpoints(event, current);
 });
 
 for (const link of chapterLinks) {

@@ -229,3 +229,96 @@ footer { display: flex; align-items: center; justify-content: space-between; gap
 .pause { align-content: center; text-align: center; }
 .pause img { display: block; margin: 0 auto 1.8rem; }
 .pause h2 { max-width: 24ch; margin-inline: auto; }
+
+.case-prologue {
+  padding-bottom: clamp(5rem, 10vw, 9rem);
+  background: url("assets/private-threads.svg") left bottom 2.5rem / min(23rem, 100%) 1.5rem no-repeat;
+}
+.case-prologue .lead, .case-check > p { max-width: 62ch; }
+.case-takeaway { margin-top: 1.4rem; font: clamp(1.35rem, 2.5vw, 2.1rem)/1.25 var(--serif); }
+.case-check { padding-top: clamp(2rem, 4vw, 4rem); border-top: 1px solid var(--line); }
+.workflow-expertise { padding-block: .8rem; border-top: 1px solid var(--line); }
+.workflow-expertise h3 { display: flex; align-items: center; gap: 12px; font: clamp(1.14rem, 1.8vw, 1.54rem)/1.2 var(--serif); }
+.workflow-expertise h3 span { color: var(--moss); font: 700 .72rem var(--body); letter-spacing: .12em; }
+.workflow-expertise > p { max-width: 54ch; font-size: .94rem; }
+.workflow-expertise details { margin-top: .7rem; }
+
+/* The four checkpoints share one continuous thread. */
+.timeline-nav {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 2.3rem;
+  background: url("assets/private-threads.svg") center 0 / 100% 30px no-repeat;
+}
+.timeline-nav a {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: .12rem;
+  border: 0;
+  padding: 1.8rem .15rem .9rem;
+  color: var(--sage);
+  text-align: center;
+  text-decoration: none;
+  transition: color .25s, background-color .25s;
+}
+.timeline-nav a::before {
+  content: "";
+  position: absolute;
+  top: .6rem;
+  width: .75rem;
+  height: .75rem;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: var(--forest);
+}
+.timeline-nav a:hover, .timeline-nav a[aria-current] { color: var(--gold); }
+.timeline-nav a[aria-current] { background: linear-gradient(transparent 19%, #d8bf9612); }
+.timeline-nav a[aria-current]::before { background: var(--gold); box-shadow: 0 0 0 4px #d8bf9630; }
+.timeline-nav a span, .timeline-nav a small { font-size: clamp(.65rem, 1.5vw, .9rem); }
+.timeline-nav a strong { font: clamp(1.4rem, 4.1vw, 3.5rem)/1.15 var(--serif); }
+.timeline-nav a[aria-current] strong { color: var(--sand); }
+.checkpoint { padding-block: clamp(1.25rem, 4vw, 3.3rem); }
+.checkpoint h3 { font-size: clamp(1.55rem, 3vw, 2.75rem); }
+
+/* Native radio groups retain keyboard and touch behaviour beneath the selection labels. */
+.choices label {
+  position: relative;
+  border: 0;
+  border-bottom: 2px solid var(--line);
+  padding-inline: .55rem;
+  transition: background-color .2s, border-color .2s;
+}
+.choices label:hover { background-color: #adbba437; }
+.choices label:has(input:focus-visible) { outline: 2px solid var(--rose); outline-offset: 3px; }
+.choices input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+.choices label:has(input:checked) { border-bottom-color: var(--gold); }
+[data-switch="oracle"] { padding-bottom: 1rem; background: url("assets/private-threads.svg") left bottom / 10rem .7rem no-repeat; }
+.selection-kicker { margin-top: 1.25rem; font-size: .7rem; letter-spacing: .13em; font-weight: 700; color: var(--moss); text-transform: uppercase; }
+.selection-kicker + h3 { margin-top: .45rem; }
+.record { padding-inline: .8rem; border-left: 3px solid var(--forest); background: #adbba42c; }
+.council-steps li { border-left: 1px solid var(--line); margin-left: .3rem; }
+.council-steps li::before { left: .55rem; }
+.partner-proposition { margin-top: 1.5rem; color: var(--gold); }
+.founder-contact {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .3rem 1.2rem;
+  margin: .9rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: .92rem;
+}
+.founder-contact li { margin: 0; }
+.founder-contact a { display: grid; min-height: 44px; padding-block: .3rem; text-decoration: none; }
+.founder-contact strong { color: var(--gold); text-decoration: underline; text-underline-offset: .22em; }
+.founder-contact span { color: var(--sand); overflow-wrap: anywhere; }
+
+@media (max-width: 540px) {
+  .hero h1 { font-size: clamp(2.8rem, 12vw, 3.25rem); }
+  .hero-description { max-width: 36ch; }
+  .timeline-nav a small { line-height: 1.3; }
+}
