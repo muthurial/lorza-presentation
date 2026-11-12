@@ -68,6 +68,8 @@ progress::-moz-progress-bar { background: var(--gold); }
   color: var(--forest);
 }
 .hero-copy { padding-block: 18px 50px; }
+.opening-identity { display: flex; align-items: center; gap: 12px; }
+.opening-identity img { flex: none; }
 .hero-line { max-width: 31ch; font-size: clamp(1.38rem, 2.2vw, 2.12rem); line-height: 1.2; margin-top: 1.55rem; }
 .hero-description { max-width: 42ch; margin-top: .85rem; }
 .button {
@@ -316,6 +318,8 @@ footer { display: flex; align-items: center; justify-content: space-between; gap
 .founder-contact a { display: grid; min-height: 44px; padding-block: .3rem; text-decoration: none; }
 .founder-contact strong { color: var(--gold); text-decoration: underline; text-underline-offset: .22em; }
 .founder-contact span { color: var(--sand); overflow-wrap: anywhere; }
+.closing .signature { position: relative; padding-inline-start: 2.35rem; }
+.closing .signature img { position: absolute; inset: 0 auto auto 0; }
 
 @media (max-width: 540px) {
   .hero h1 { font-size: clamp(2.8rem, 12vw, 3.25rem); }
